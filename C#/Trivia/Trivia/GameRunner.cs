@@ -1,13 +1,10 @@
 ﻿using System;
 
-namespace Trivia
-{
-    public class GameRunner
-    {
+namespace Trivia {
+    public class GameRunner {
         private static bool _notAWinner;
 
-        public static void Main(string[] args)
-        {
+        public static void Main(string[] args) {
             var aGame = new Game();
 
             aGame.Add("Chet");
@@ -16,16 +13,13 @@ namespace Trivia
 
             var rand = new Random();
 
-            do
-            {
+            do {
                 aGame.Roll(rand.Next(5) + 1);
 
-                if (rand.Next(9) == 7)
-                {
+                if (rand.Next(9) == 7) {
                     _notAWinner = aGame.WrongAnswer();
                 }
-                else
-                {
+                else {
                     _notAWinner = aGame.WasCorrectlyAnswered();
                 }
             } while (_notAWinner);
