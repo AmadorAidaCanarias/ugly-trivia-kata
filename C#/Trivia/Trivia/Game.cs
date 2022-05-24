@@ -85,21 +85,52 @@ namespace Trivia {
         private void AskQuestion() {
             if (CurrentCategory() == "Pop")
             {
-                WriteLine(_popQuestions.First());
-                _popQuestions.RemoveFirst();
+                WriteLine(GetPopQuestion() );
             }
-            if (CurrentCategory() == "Science") {
-                WriteLine(_scienceQuestions.First());
-                _scienceQuestions.RemoveFirst();
+            if (CurrentCategory() == "Science")
+            {
+                WriteLine(GetScienceQuestion() );
             }
-            if (CurrentCategory() == "Sports") {
-                WriteLine(_sportsQuestions.First());
-                _sportsQuestions.RemoveFirst();
+            if (CurrentCategory() == "Sports")
+            {
+                WriteLine(GetSportsQuestion() );
             }
-            if (CurrentCategory() == "Rock") {
-                WriteLine(_rockQuestions.First());
-                _rockQuestions.RemoveFirst();
+            if (CurrentCategory() == "Rock")
+            {
+                WriteLine(GetRockQuestion() );
             }
+        }
+
+        private string GetRockQuestion()
+        {
+            string message;
+            message = _rockQuestions.First();
+            _rockQuestions.RemoveFirst();
+            return message;
+        }
+
+        private string GetSportsQuestion()
+        {
+            string message;
+            message = _sportsQuestions.First();
+            _sportsQuestions.RemoveFirst();
+            return message;
+        }
+
+        private string GetScienceQuestion()
+        {
+            string message;
+            message = _scienceQuestions.First();
+            _scienceQuestions.RemoveFirst();
+            return message;
+        }
+
+        private string GetPopQuestion()
+        {
+            string message;
+            message = _popQuestions.First();
+            _popQuestions.RemoveFirst();
+            return message;
         }
 
         private void WriteLine(string message)
