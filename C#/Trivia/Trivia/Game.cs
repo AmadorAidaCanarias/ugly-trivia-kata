@@ -66,8 +66,8 @@ namespace Trivia {
                     Console.WriteLine(_players[_currentPlayer]
                             + "'s new location is "
                             + _places[_currentPlayer]);
-                    Console.WriteLine("The category is " + CurrentCategory());
-                    AskQuestion();
+                    Console.WriteLine("The category is " + CurrentCategory(_places[_currentPlayer]));
+                    AskQuestion(_places[_currentPlayer]);
                 }
                 else {
                     Console.WriteLine(_players[_currentPlayer] + " is not getting out of the penalty box");
@@ -81,40 +81,40 @@ namespace Trivia {
                 Console.WriteLine(_players[_currentPlayer]
                         + "'s new location is "
                         + _places[_currentPlayer]);
-                Console.WriteLine("The category is " + CurrentCategory());
-                AskQuestion();
+                Console.WriteLine("The category is " + CurrentCategory(_places[_currentPlayer]));
+                AskQuestion(_places[_currentPlayer]);
             }
         }
 
-        private void AskQuestion() {
-            if (CurrentCategory() == "Pop") {
+        private void AskQuestion(int place) {
+            if (CurrentCategory(place) == "Pop") {
                 Console.WriteLine(_popQuestions.First());
                 _popQuestions.RemoveFirst();
             }
-            if (CurrentCategory() == "Science") {
+            if (CurrentCategory(place) == "Science") {
                 Console.WriteLine(_scienceQuestions.First());
                 _scienceQuestions.RemoveFirst();
             }
-            if (CurrentCategory() == "Sports") {
+            if (CurrentCategory(place) == "Sports") {
                 Console.WriteLine(_sportsQuestions.First());
                 _sportsQuestions.RemoveFirst();
             }
-            if (CurrentCategory() == "Rock") {
+            if (CurrentCategory(place) == "Rock") {
                 Console.WriteLine(_rockQuestions.First());
                 _rockQuestions.RemoveFirst();
             }
         }
 
-        private string CurrentCategory() {
-            if (_places[_currentPlayer] == 0) return "Pop";
-            if (_places[_currentPlayer] == 4) return "Pop";
-            if (_places[_currentPlayer] == 8) return "Pop";
-            if (_places[_currentPlayer] == 1) return "Science";
-            if (_places[_currentPlayer] == 5) return "Science";
-            if (_places[_currentPlayer] == 9) return "Science";
-            if (_places[_currentPlayer] == 2) return "Sports";
-            if (_places[_currentPlayer] == 6) return "Sports";
-            if (_places[_currentPlayer] == 10) return "Sports";
+        private string CurrentCategory(int place) {
+            if (place == 0) return "Pop";
+            if (place == 4) return "Pop";
+            if (place == 8) return "Pop";
+            if (place == 1) return "Science";
+            if (place == 5) return "Science";
+            if (place == 9) return "Science";
+            if (place == 2) return "Sports";
+            if (place == 6) return "Sports";
+            if (place == 10) return "Sports";
             return "Rock";
         }
 
