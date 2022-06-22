@@ -14,7 +14,7 @@
             isPenaltyBox = false;
         }
 
-        public void InPenaltyBox() {
+        public void GoToPenaltyBox() {
             isPenaltyBox = true;
         }
 
@@ -37,7 +37,7 @@
         }
 
         public bool IWon => purse == 6;
-        public int CurrentScore => purse;
-        public int CurrentPosition => place;
+        public int Score => purse;
+        public int Position => place;
     }
 }

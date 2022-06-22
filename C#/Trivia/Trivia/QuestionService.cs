@@ -27,6 +27,7 @@
         public void AskQuestion(int place)
         {
             var currentCategoryType = CurrentCategoryType(place);
+            reporter.Report("The category is " + CurrentCategory(place));
             reporter.Report(questions.MakeAsk(currentCategoryType));
             questions.RemoveLast(currentCategoryType);
         }
@@ -46,7 +47,7 @@
                 _ => QuestionType.Rock
             };
 
-        public string CurrentCategory(int place)
+        private string CurrentCategory(int place)
         {
             QuestionType currentType = CurrentCategoryType(place);
             return currentType.ToString();
