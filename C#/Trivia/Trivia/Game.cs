@@ -15,28 +15,32 @@
             return playerService.Add(playerName);
         }
 
-        public void Roll(int roll)
-        {
-            ReportRoll(roll);
-
+        public void Roll(int roll) {
+            MovementInformation(roll);
             if (playerService.ItsCurrentPlayerInPenaltyBox) {
-                if (roll % 2 != 0) {
-                    playerService.GetOutofThePenaltyBox();
-                    playerService.RollPlayerTo(roll);
-                    questionService.AskQuestion(playerService.CurrentPlayerPosition);
-                }
-                else {
-                    playerService.StaysInThePenaltyBox();
-                }
+                RollPlayerInPenaltyBox(roll);
             }
             else {
-                playerService.RollPlayerTo(roll);
-                questionService.AskQuestion(playerService.CurrentPlayerPosition);
+                RollAndAsk(roll);
             }
         }
 
-        private void ReportRoll(int roll)
-        {
+        private void RollPlayerInPenaltyBox(int roll) {
+            if (roll % 2 != 0) {
+                playerService.GetOutofThePenaltyBox();
+                RollAndAsk(roll);
+            }
+            else {
+                playerService.StaysInThePenaltyBox();
+            }
+        }
+
+        private void RollAndAsk(int roll) {
+            playerService.RollPlayerTo(roll);
+            questionService.AskQuestion(playerService.CurrentPlayerPosition);
+        }
+
+        private void MovementInformation(int roll) {
             reporter.Report(playerService.CurrentPlayerName + " is the current player");
             reporter.Report("They have rolled a " + roll);
         }
