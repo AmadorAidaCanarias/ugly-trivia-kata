@@ -5,7 +5,7 @@ namespace Trivia {
         private static bool _notAWinner;
 
         public static void Main(string[] args) {
-            var aGame = new Game();
+            var aGame = new Game(new Reporter());
 
             aGame.Add("Chet");
             aGame.Add("Pat");
